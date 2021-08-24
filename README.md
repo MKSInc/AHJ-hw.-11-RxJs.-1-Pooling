@@ -11,7 +11,7 @@
 
 ---
 
-## 11.1 Polling
+## 11.1 Polling (Frontend, [Backend](https://github.com/MKSInc/AHJ-hw.-11-RxJs.-1-Pooling-Backend))
 
 ### Легенда
 
@@ -35,7 +35,7 @@
       "subject": "Hello from Anya",
       "body": "Long message body here" ,
       "received": 1553108200
-    }
+    },
     {
       "id": "<uuid>",
       "from": "alex@petrov",
