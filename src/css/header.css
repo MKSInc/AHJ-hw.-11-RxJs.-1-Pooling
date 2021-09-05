@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  justify-content: center;
+
+  padding: 20px 0;
+  margin-bottom: 20px;
+}
+
+.header__lang {
+  display: flex;
+  justify-content: center;
+}
+
+.lang-btn {
+  flex: 0 0 20px;
+  border: 1px solid black;
+
+  cursor: pointer;
+}
+
+.lang-btn:not(:last-child) {
+  margin-right: 10px;
+}
+
+.lang-btn img {
+  display: block;
+}

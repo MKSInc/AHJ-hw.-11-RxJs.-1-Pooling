@@ -9,7 +9,12 @@ function addHash(fileName, buildMode, hash = 'contenthash') {
 }
 
 module.exports = (buildMode) => ({
-  entry: './src/index.js',
+  entry: {
+    // Точка входа в корень сайта. Определяет язык и перенаправляет на соответствующую страницу.
+    root: './src/js/root.js',
+    // Общая точка входа для страниц с контентом на определенном языке.
+    index: './src/index.js',
+  },
   output: {
     path: path.resolve('..', 'AHJ-hw.-11-RxJs.-1-Pooling-Backend', 'public'),
     // path: path.resolve(__dirname, 'dist'),
@@ -32,13 +37,35 @@ module.exports = (buildMode) => ({
           MiniCssExtractPlugin.loader, 'css-loader',
         ],
       },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 3072,
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebPackPlugin({
-      template: './src/index.html',
+      template: './src/index.html', // корень сайта, не содержит контента.
       filename: './index.html',
+      chunks: ['root'], // 'root.js' только для корня сайта.
+    }),
+    new HtmlWebPackPlugin({
+      template: './src/html/ru/index.html', // Версия страницы на русском.
+      filename: './ru/index.html',
+      chunks: ['index'], // 'index.js' основной js файл для всех страниц (кроме корня).
+    }),
+    new HtmlWebPackPlugin({
+      template: './src/html/en/index.html', // Версия страницы на английском.
+      filename: './en/index.html',
+      chunks: ['index'],
     }),
     new MiniCssExtractPlugin({
       filename: addHash('[name].css', buildMode),

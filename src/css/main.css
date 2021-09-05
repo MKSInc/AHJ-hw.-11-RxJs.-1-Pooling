@@ -30,6 +30,16 @@ h2 span {
   color: slateblue;
 }
 
-.container {
-  padding: 15px;
+ul, ol {
+  list-style-type: none;
+}
+
+._container {
+  max-width: 1000px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.content {
+  padding-bottom: 20px;
 }
